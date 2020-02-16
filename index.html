@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ScrTV</title>
+  <meta http-equiv="Content-Type" content="text/html;Charset=utf-8" />
+  <style type="text/css">
+    *{margin:0px;padding:0px;}
+    body {background-color:#000;scroll:no;color:#fff;}
+    .screen {position:absolute;width:100%;height:100%;}
+    .screen:first-of-type{z-index:9999;cursor:none;}
+    .screen.text {
+      text-align:center;
+      vertical-align: middle;
+      display:table;
+      height:80%;
+    } 
+    .screen.text span {
+      display: table-cell;
+      vertical-align: middle;
+      font-size:75px;
+    }
+  </style>
+</head>  
+<body>
+  <div class="screen"></div>
+
+  <div class="screen text">
+    <span>This is the simple intro example text</span>
+  </div>
+
+  <div class="screen youtube" data-src=""></div>
+
+  <div class="screen vimeo" data-src=""></div>
+  
+</body>
+</html>
