@@ -8,7 +8,7 @@
     body {background-color:#000;color:#fff;}
     .screen, .locker {position:absolute;width:100%;height:100%;}
     .locker {z-index:9999;cursor:none;display:block!important;}
-    .screen {transition: all 1.5s ease; display:none;}
+    .screen {transition: all 0.8s ease; opacity:0;}
     .text {text-align:center;vertical-align: middle;display:table;width:100%;height:100%;} 
     .text * {display: table-cell;text-align:center;vertical-align: middle;font-size:75px;}
     .caption {text-align:center;vertical-align: middle;display:table;width:100%;height:30%;top:70%;position:absolute;} 
@@ -57,7 +57,11 @@
     var screens = document.getElementsByClassName("screen");
     document.addEventListener('keydown',function(evt){
       switch (evt.code) {
-        case "Numpad1":
+        case "Numpad0":
+          evt.preventDefault();
+          for ( i=0; i<screens.length;i++ ) {
+            screens[i].style.opacity="0";
+          }
           break;  
         case 'Digit2':
           evt.preventDefault();
@@ -73,9 +77,9 @@
         evt.preventDefault();
         for ( i=0; i<screens.length;i++ ) {
           if( i==0 ){
-            screens[0].style.display="block";
+            screens[0].style.opacity="1";
           } else {
-            screens[i].style.display="none";
+            screens[i].style.opacity="0";
           }
         }
       }
@@ -84,9 +88,9 @@
         evt.preventDefault();
         for ( i=0; i<screens.length;i++ ) {
           if( i==1 ){
-            screens[1].style.display="block";
+            screens[1].style.opacity="1";
           } else {
-            screens[i].style.display="none";
+            screens[i].style.opacity="0";
           }
         }
       }
@@ -95,15 +99,15 @@
         evt.preventDefault();
         for ( i=0; i<screens.length;i++ ) {
           if( i==2 ){
-            screens[2].style.display="block";
+            screens[2].style.opacity="1";
           } else {
-            screens[i].style.display="none";
+            screens[i].style.opacity="0";
           }
         }
       }
     });
   
-    screens[0].style.display="block";
+    screens[0].style.opacity="1";
   </script>  
 </body>
 </html>
