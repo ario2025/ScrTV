@@ -4,33 +4,106 @@
   <title>ScrTV</title>
   <meta http-equiv="Content-Type" content="text/html;Charset=utf-8" />
   <style type="text/css">
-    *{margin:0px;padding:0px;}
-    body {background-color:#000;scroll:no;color:#fff;}
-    .screen {position:absolute;width:100%;height:100%;}
-    .screen:first-of-type{z-index:9999;cursor:none;}
-    .screen.text {
-      text-align:center;
-      vertical-align: middle;
-      display:table;
-      height:80%;
-    } 
-    .screen.text span {
-      display: table-cell;
-      vertical-align: middle;
-      font-size:75px;
-    }
+    * {margin:0px;padding:0px;overflow:hidden;font-family: sans-serif;}
+    body {background-color:#000;color:#fff;}
+    .screen, .locker {position:absolute;width:100%;height:100%;}
+    .locker {z-index:9999;cursor:none;display:block!important;}
+    .screen {transition: all 1.5s ease; display:none;}
+    .text {text-align:center;vertical-align: middle;display:table;width:100%;height:100%;} 
+    .text * {display: table-cell;text-align:center;vertical-align: middle;font-size:75px;}
+    .caption {text-align:center;vertical-align: middle;display:table;width:100%;height:30%;top:70%;position:absolute;} 
+    .caption * {display: table-cell;text-align:center;vertical-align: middle;font-size:30px;}
   </style>
+  
 </head>  
 <body>
-  <div class="screen"></div>
+  <div class="locker"></div>
 
-  <div class="screen text">
-    <span>This is the simple intro example text</span>
+  <div class="screen">
+      <div class="caption">
+        <p>Press [1], [2], [3], [..] to change screens.</p>
+      </div>
   </div>
 
-  <div class="screen youtube" data-src=""></div>
+  <div class="screen">
+    <div class="text">
+      <p>This is a screen.</p>
+    </div>
+  </div>
 
-  <div class="screen vimeo" data-src=""></div>
+  <div class="screen">
+    <div class="text">
+      <p>This is another, second screen.</p>
+    </div>
+  </div>
+
+  <div class="screen">
+    <div class="text">
+      <p>This is last, third screen.</p>
+    </div>
+  </div>
   
+  <div class="screen">
+    <div class="youtube" data-src=""></div>    
+  </div>
+
+  <div class="screen">
+    <div class="vimeo" data-src=""></div>
+  </div>
+  
+  
+  
+<script type="text/javascript">
+    var screens = document.getElementsByClassName("screen");
+    document.addEventListener('keydown',function(evt){
+      switch (evt.code) {
+        case "Numpad1":
+          break;  
+        case 'Digit2':
+          evt.preventDefault();
+          break;
+        case 'F10':
+          evt.preventDefault();
+          break;
+        default:
+          break;
+      };
+      
+      if(evt.key=="1"){
+        evt.preventDefault();
+        for ( i=0; i<screens.length;i++ ) {
+          if( i==0 ){
+            screens[0].style.display="block";
+          } else {
+            screens[i].style.display="none";
+          }
+        }
+      }
+
+      if(evt.key=="2"){
+        evt.preventDefault();
+        for ( i=0; i<screens.length;i++ ) {
+          if( i==1 ){
+            screens[1].style.display="block";
+          } else {
+            screens[i].style.display="none";
+          }
+        }
+      }
+
+      if(evt.key=="3"){
+        evt.preventDefault();
+        for ( i=0; i<screens.length;i++ ) {
+          if( i==2 ){
+            screens[2].style.display="block";
+          } else {
+            screens[i].style.display="none";
+          }
+        }
+      }
+    });
+  
+    screens[0].style.display="block";
+  </script>  
 </body>
 </html>
